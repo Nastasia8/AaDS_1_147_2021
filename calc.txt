@@ -1,0 +1,21 @@
+print ('Введите x: ', end='')
+x = float(input())
+print('Введите y: ', end='')
+y = float(input())
+print('Введите номер операции: ', end='')
+oper = input()
+if (oper == '1'):
+    print('x + y = ', x+y)
+elif (oper == '2'):
+    print('x - y = ', x-y)
+elif (oper == '3'):
+    print('x * y = ', x*y)
+elif (oper == "4"):
+    if (y == 0):
+        print('Ошибка') 
+    else:
+        print('x / y = ', x/y)
+elif (oper == '5'):
+    print('x**y = ', x**y)
+else:
+    print('Ошибка')
