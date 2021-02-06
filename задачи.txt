@@ -1,0 +1,46 @@
+#задача1
+text = "Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects. Python is dynamically-typed and garbage-collected.".lower()
+countP = 0
+countO = 0
+for letter in text:
+    if letter == 'p':
+        countP+=1
+    if letter == 'o':
+        countO+=1
+print(countP)
+print(countO)
+
+#задача2
+from math import pi
+from math import sqrt
+def cycle():
+    T = float(input(""))
+    w = (2*pi)/T
+    print(w)
+cycle()
+def period():
+    m = float(input(""))
+    k = float(input(""))
+    TT = 2*pi*sqrt(m/k)
+    print(TT)
+period()
+
+#задача3
+def culc():
+    oper = int(input())
+    x = float(input(""))
+    y = float(input(""))
+    print(x+y)
+    if (oper == 1):
+        print(x+y)
+    if (oper == 2):
+        print(x-y)
+    if (oper == 3):
+        print(x*y)
+    if (oper == 4):
+        if (x!=0):
+            print(x**y)
+    if (oper == 5):
+        if (y!=0):
+            print(x/y)
+culc()
