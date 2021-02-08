@@ -3,7 +3,7 @@ def func(res):
     x = int(input())
     print('Введите последнее число: ', end='')
     y = int(input())
-    while x < y:
+    while x <= y:
         if x % 2 == 0:
             res += x
             x += 2
@@ -11,4 +11,4 @@ def func(res):
             x += 1
     return(res)
 
-print('Сумма четных = ', func(0))
+print('Сумма четных = ', func(res = 0))
