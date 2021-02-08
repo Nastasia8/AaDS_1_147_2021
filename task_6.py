@@ -7,6 +7,8 @@ def func(res):
         if x % 2 == 0:
             res += x
             x += 2
+        else:
+            x += 1
     return(res)
 
 print('Сумма четных = ', func(0))
