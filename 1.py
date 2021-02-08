@@ -1,14 +1,2 @@
-from math import pi, sqrt
-def Period(k,m):
-   T=2*pi*sqrt(float(m)/float(k))
-   print("Period=",T)
-   return(T)
-
-def Frequency(T):
-   w=(2*pi)/T
-   print("Frequency=",w)
-
-k=input("Enter k:")
-m=input("Enter m:") 
-T=Period(k,m)
-Frequency(T)
+Text = 'Python is an interpreted, high-level and general-purpose programming language. Python\'s design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects. Python is dynamically-typed and garbage-collected.'.lower()
+print("p=", Text.count("p"), "o=", Text.count("o"))
