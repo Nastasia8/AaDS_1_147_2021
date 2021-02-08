@@ -1,12 +1,10 @@
 print('Введите сумму вклада: ', end='')
 P = float(input())
-I = 5
-m = 15 
+I = 15
+m = 6
+n = 1
 
-def func(n, S):
-    while n<=1:
-        S = P*((1+(I/100)/(m/12))**(m/(12*n)))
-        n *= 2
-    return round((S), 3)
+def func(m, I, P, n):
+    return round((P*((1+(I/100)/(m/12))**(m/(12*n)))), 3)
 
-print('Через год вклад будет = ', func(0.25, 0.0))
+print('Через год вклад будет = ', func(P, I, m, n))
