@@ -1,9 +1,19 @@
 c=int()
 def function(a,b):
     global c
-    for i in range(int(a),int(b)+1):
+    a=int(a)
+    b=int(b)
+    for i in range(a,b+1):
         if i % 2 == 0:
             c = c+i
         i += 1
     print(c)
+    c=0
+    i=a
+    while i < b+1:
+        if i % 2 == 0:
+            c = c+i
+        i = i+1
+    print(c)
+        
 function(input("Введите нижнюю границу диапазона: "),input("Введите верхнюю границу диапазона: "))
