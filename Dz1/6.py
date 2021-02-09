@@ -2,7 +2,7 @@ def calc_for():
     a = int(input("a="))
     b = int(input("b="))
     summ = 0
-    for i in range(a-1,b+1):
+    for i in range(a,b+1):
         if i%2 == 0:
             summ = summ + i
     print("Сумма=",summ)
