@@ -12,3 +12,4 @@ dictionary={}
 for word in text.split(' '):
     dictionary[word]=dictionary.get(word,0)+1
 print (dictionary)
+
