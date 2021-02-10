@@ -3,7 +3,7 @@ res = []
 i = 0
 j = 0
 
-while i <= 9:
+while i < len(kor):
     if kor[i] == 2:
         res.insert(j, i)
         j += 1
