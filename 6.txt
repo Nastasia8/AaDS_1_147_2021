@@ -1,12 +1,8 @@
-c=int()
 def function(a,b):
-    global c
-    a=int(a)
-    b=int(b)
+    c=int()
     for i in range(a,b+1):
         if i % 2 == 0:
             c = c+i
-        i += 1
     print(c)
     c=0
     i=a
@@ -16,4 +12,4 @@ def function(a,b):
         i = i+1
     print(c)
         
-function(input("Введите нижнюю границу диапазона: "),input("Введите верхнюю границу диапазона: "))
+function(int(input("Введите нижнюю границу диапазона: ")),int(input("Введите верхнюю границу диапазона: ")))
