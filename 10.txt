@@ -1,0 +1,5 @@
+def function(y,z):
+    for i in range(1,21,2):
+        print(i**(y**z))
+        
+function(int(input("Введите степень числа: ")),int(input("Введите степень степени: ")))
