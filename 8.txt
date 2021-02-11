@@ -3,7 +3,6 @@ def function(a):
         b=int()
         for i in range(0,6):
             b=b+int(a[i])
-            i=i+1
         print(b)
     else:
         print("Это не 6 цифр }:(   Попробуйте ещй раз...")
