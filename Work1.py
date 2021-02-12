@@ -56,7 +56,7 @@ k = float(input("Введите число k \n"))
 def sum(n=1):
     S=0
     while (n<=k):
-        S=S+(2/((2*n+k)*(2*n+3)))
+        S=S+(2/((2*n+1)*(2*n+3)))
         n=n+1
     print("Сумма числового ряда =", S, '\n')
 def com(n=1):
@@ -72,38 +72,43 @@ com()
 #Задание 6
 a=int(input("Введите первое целочисленное число в диапозоне \n"))
 b=int(input("Введите последнее целочисленное число в диапозоне \n"))
-res=0
-kek=0
-for i in range(a, b+1):
-    if i%2==0:
-        res+=i
-print("res = ", res)
-while a<b:
-    a=a+1
-    if a%2==0:
-        kek+=a
-print("kek =", kek)
+def f(a, b):
+    res=0
+    for i in range(a, b+1):
+        if i%2==0:
+            res+=i
+    print("Сумма = ", res)
+def k(a, b):
+    kek=0
+    while a<b+1:
+        if a%2==0:
+            kek+=a
+        a+=1
+    print("Сумма =", kek)
+f(a,b)
+k(a,b)
 
 
 #Задание 7
 from math import sqrt
 x=float(input("Введите x: \n"))
-if x!=0:
-    y=float(input("Введите y: \n"))
-    z=float(input("Введите z: \n"))
-    def dis():
-        D = y**2-4*x*z
-        if sqrt(D)<0:
-            print('Корней нет')
-        elif sqrt(D)==0:
-            x1=((-y)/2*x)
-        elif sqrt(D)>0:
-            x1=((-y+sqrt(D))/2*x)
-            x2=((-y-sqrt(D))/2*x)
+y=float(input("Введите y: \n"))
+z=float(input("Введите z: \n"))
+
+def dis():
+    D = y**2-4*x*z
+    if D<0:
+        print('Корней нет')
+    elif (x!=0 and D==0):
+        x1=((-y)/2*x)
+        print("Дискриминант =", D, '\n', "Корень = ", x1)
+    elif (x!=0 and D>0):
+        x1=((-y+sqrt(D))/2*x)
+        x2=((-y-sqrt(D))/2*x)
         print("Дискриминант =", D, '\n', "Первый корень = ", x1, '\n', "Второй корень= ", x2)
-    dis()
-else:
-    print ("WTF?")
+    else:
+         print('x не должен принимать значение равное 0')
+dis()
 
 
 #Задание 8
@@ -126,8 +131,8 @@ print (sum)
 
 
 #Задание 10
-y=int(input("Введите число y" '\n'))
-z=int(input("Введите число z" '\n'))
+y=float(input("Введите число y" '\n'))
+z=float(input("Введите число z" '\n'))
 q=list(range(1,21))
 print(q)
 for i in q:
