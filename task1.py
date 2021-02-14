@@ -10,6 +10,7 @@ def funk():
     for i in diction:
         if i%2 == 0:
             new_dict.append(i)
+    new_dict.sort()
     print(new_dict)
 
 
