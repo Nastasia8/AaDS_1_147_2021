@@ -1,0 +1,88 @@
+#1 задача
+def func(list):
+    numbers = [3, 8, 2, 1, 4, 7, 5, 6, 10, 9]
+    for number in list:
+        if number % 2 == 0:
+            list(number)
+    print(list)
+func(list)
+
+#2 задача
+a = ["tiger", "leopard", " elephant", "Fox", "wolf", "camel", "raccoon"]
+j = a.index("raccoon")
+removed_item = a.pop(j)
+a.append("tiger")
+a.insert(0,"raccoon")
+i = a.index("tiger")
+removed_item = a.pop(i)
+print(a)
+a.clear()
+
+#3 задача
+a.remove(last_a)
+print(a)
+
+def func(input_set,input_list):
+    for i in input_list:
+        if i not in input_set:
+            return False
+        return True
+
+print(func({1,2,"a",4},[5]))
+
+#4 задача
+list = (1, 2, 2, 3, 1, 2, 4, 3, 2, 2)
+new_list = []
+
+j = 2
+i = 0
+for k in list:
+    if k == j:
+        print('Значение:', k, 'Индекс:', i)
+        new_list.append(i)
+    i += 1
+print(new_list)
+
+
+#5 задача
+text = "Hello hi how hello are and you I am fine thank you and you hello You Thank And".lower()
+dict = {}
+for word in text.split(' '):
+    if word in dict:
+        dict[word]+=1
+    else:
+        dict[word] = 1
+print(dict)
+
+#    dict[word] = dict.get(word,0) + 1
+#print(dict)
+#print({n:dict.count(n) for n in dict})
+
+#6 задача
+dict = {1,2,3,4,5,6,7}
+def func(dict):
+   sum = 0
+   p = 1
+for i in dict:
+    sum+=i
+    p*=i
+print(sum,p)
+
+func()
+
+#7 задача
+matr = [[2, 1, 3, 6], [0, 6, 4, 8], [2, 10, 1, 17], [5, 14, 20, 0]]
+
+
+def d(matr):
+    print("Матрица до преобразования")
+    for i in range(len(matr)):
+        print(matr[i])
+    for i in range(len(matr)):
+        matr[i][-i-1] *= 2
+    print('Матрица после преобразования')
+    for i in range(len(matr)):
+        print(matr[i])
+
+
+d(matr)
