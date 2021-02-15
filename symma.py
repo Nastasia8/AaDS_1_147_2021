@@ -9,7 +9,7 @@ def proizveden(result, n):
     return(result)
 
 def summa(result, n):
-    while n < number:
+    while n <= number:
         result += 2/((2*n+1)*(2*n+3))
         n += 1
     return(result)
