@@ -6,7 +6,7 @@ print('+, -, *, /, **')
 oper = input()
 if (oper == '+'):
     print('x + y ', x+y)
-elif (oper == '-')
+elif (oper == '-'):
     print('x - y', x-y)
 elif (oper == '*'):
     print('x * y', x*y)
