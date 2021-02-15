@@ -1,16 +1,23 @@
-text = 'Hello hi how hello are and you I am fine thank you and you hello You Thank And'.lower().split()
-x = []
-i = 0
-
-while i < len(text):
-    j = -1
-    k = 0
-    while j < len(text):
-        if text[i] == text[j]:
-            k += 1
-        j += 1
-    i += 1
-    x.insert(i, k)
+def main():
+    kor()
     
-slova = dict(zip(text, x))
-print(slova)
+def kor():
+    a = (1, 2, 2, 3, 1, 2, 4, 3, 2, 2)
+    res = []
+    i = 0
+    y = 0
+    while i < len(a):
+        
+        
+        if a[i] == 2:
+             res.insert(y, i)
+            
+            
+        
+        y += 1
+    i += 1
+    print(res)
+
+main()
+
+
