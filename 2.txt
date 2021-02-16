@@ -1,0 +1,9 @@
+import math
+
+def function(m,k):
+    t=2*math.pi*math.sqrt(m/k)
+    v=2*math.pi/t 
+    print(v)
+    print(t)
+    
+function(float(input("Введите массу груза: ")),float(input("Введите коэффициент жёсткости пружины: ")))
