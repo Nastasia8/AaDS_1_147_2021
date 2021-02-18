@@ -60,7 +60,7 @@ a=["Bass", "Pike", "Roach", "Catfish", "Trout", "Mackerel", "Salmon", "Zander", 
 print(a)
 def sortByAlphabet(inputStr):
         return inputStr[-1]
-b = sorted(a, key=sortByAlphabet)
+b = sorted(a, key=sortByAlphabet, reverse=True)
 print(b)
 x = ' '.join(b)
 print(x)
