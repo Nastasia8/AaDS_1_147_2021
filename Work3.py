@@ -43,18 +43,16 @@ main(fib)
 #Задание 3
 text=["Crime and Punishment", 1, 331, 1866, "The Master and Margarita", 1, 470, 1966, "War and Peace", 4, 1274, 1869, "And Quiet Flows the Don", 4, 1600, 1940]
 dict={}
+val=""
 def key(text):
     for x in text:
         if type(x) == str:
-           dict[x]=1
-def val(dict):
-    dict["Crime and Punishment"] = text[1:4]
-    dict["The Master and Margarita"] = text[5:8]
-    dict["War and Peace"] = text[9:12]
-    dict["And Quiet Flows the Don"] = text[13:15]
-    print (dict)
+           dict[x]=[]
+           val = x
+        else:
+            dict[val].append(x)
+    print(dict)
 key(text)
-val(dict)
 
 
 #Задание 4
