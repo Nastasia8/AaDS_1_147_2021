@@ -12,7 +12,7 @@ def func(x, y, z):
     if D < 0:
         print('net korn9')
     elif D == 0:
-        print(round(((-y)/(2*x)), 3)
+        print(round(((-y)/(2*x)), 3))
     else:
         print(round((((-y)+sqrt(D))/(2*x)), 3), round(((-y)-sqrt(D))/(2*x)), 3)
 func(x, y, z)
