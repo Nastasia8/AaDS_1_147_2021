@@ -1,0 +1,11 @@
+def function(a):
+    if len(a) == 6:
+        b=int()
+        for i in range(0,6):
+            b=b+int(a[i])
+        print(b)
+    else:
+        print("Это не 6 цифр }:(   Попробуйте ещй раз...")
+        function(input("Введите шестизначное число: "))
+        
+function(input("Введите шестизначное число: "))
