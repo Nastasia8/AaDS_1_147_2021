@@ -1,7 +1,7 @@
 # № задания указан в коментарии
 # в данном файле находятся все задания 
 
-
+"""
 #Задание 1
 a=[3, 8, 2, 1, 4, 7, 5, 6, 10, 9]
 c=[]
@@ -99,20 +99,24 @@ def idn(m):
           print ( "{:4d}".format(x), end = " ") 
       print ()
 idn(m)
-
 """
-#Задание 8                     #оно устало, его не трогать
+
+#Задание 8                     #оно работает, но ка-то не так, особенно с "2"
 a=(1, 2, 3, 4, 5, 4, 6, 2, 4, 7, 9, 4, 5, 6, 5, 0, 4, 2)
 x=int(input("Введите целочисленное число \n"))
 def gl(a, x):
     if x in a:
         k=1
-        l=0
-        while a[k]!=x and a[l]!=x:
-            k+=1
-            l-=1
-        print(a[k:l+1])
+        j=-1
+        if x==3 or x==7 or x==9 or x==0:
+            while a[k]!=x:
+                k+=1
+            print(a[k:])
+        else:
+            while a[k]!=x and a[j]!=x:
+                k+=1
+                j-=1
+            print(a[k+1:j+1])
     else: 
         print("The tuple doesn't contain a character =", x)
 gl(a,x)
-"""
