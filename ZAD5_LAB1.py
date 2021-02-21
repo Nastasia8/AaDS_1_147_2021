@@ -7,4 +7,4 @@ def func(a):
     else:
         print("A должно быть больше 1!")
 k=int(input("Введите число:"))
-func(k)
+func(a)
