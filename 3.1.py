@@ -1,8 +1,3 @@
-print('Введите количество повторений:')
-n = int(input())
-res = 0
-
-
 def fac(k):
     if k == 0:
         return 1
@@ -16,4 +11,7 @@ def func(res, k):
     return(res)
 
 
+print('Введите количество повторений:')
+n = int(input())
+res = 0
 print('Cумма:', round(func(0, 1), 2))
