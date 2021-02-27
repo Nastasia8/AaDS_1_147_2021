@@ -1,0 +1,11 @@
+from math import *
+
+r = int(input("Enter amount of rubles: "))
+u = int(input("Enter interest rate: "))
+p = int(input("Enter number of interest accruals per year: "))
+i = int(input("Enter term of the deposit in years: "))
+
+def cost_contr(r, u, p, i):
+    return r * pow((1 + ((u//100)//(p//12))), i/12*n)
+
+print(cost_contr(r,u,p,i))
