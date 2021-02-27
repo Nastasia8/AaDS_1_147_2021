@@ -9,7 +9,8 @@ def com(x, y):
 def deff(x, y):
     if y == 0:
         print("Ввод некорректных данных")
-    return x/y
+    else:
+        return x/y
 
 
 def minus(x, y):
@@ -34,3 +35,5 @@ elif z == 4:
     print(minus(x, y))
 elif z == 5:
     print(stepen(x, y))
+else:
+    print("No such operation")
