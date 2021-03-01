@@ -1,0 +1,91 @@
+#задача5
+
+k = float(input())
+def sum(s,n):
+    s = 0
+while n < k:
+    s = 2/((2*n+1)(2*n+3))
+    n = n + 1
+print(s)
+sum()
+
+def proizv(p,n):
+    p = 1
+while n < k:
+    p = ((-1)**(n-1)) + n
+    n = n + 1
+print(p)
+proizv()
+
+
+
+
+
+
+
+
+#задача6 
+#1:
+n = int(input("Введите начало диапазона: "))
+f = int(input("Введите конец диапазона: "))
+S=0
+
+for x in range(n,f+1):
+	if x%2==0:   
+			S=S+x
+
+print("сумма чётных чисел: ",S)
+
+#2:
+n = int(input("Введите начало диапазона: "))
+f = int(input("Введите конец диапазона: "))
+S=0
+
+while n<=f:
+	if n%2==0:
+			S=S+n
+			n+=1
+	
+print("сумма чётных чисел: ",S)
+
+
+#задача7
+
+import math 
+x = int(input(""))
+y = int(input(""))
+z = int(input(""))
+f1 = 0
+f2 = 0
+D = 0
+
+def Dis():
+    
+     D = y**2-4*x*z
+     if D<0:
+        print("корней нет")
+     else D == 0:
+        f1 = (-y)/(2*x)
+        print(f1)
+     else D>0:
+        f1 = ((-y)+pow(D))/(2*x)
+        f2 = ((-y)-pow(D)/(2*x)
+        print(f1,f2)
+Dis()
+
+
+
+
+
+
+#задача8
+n = int(input("Введите шестизначное число: "))
+Proizv = 1
+
+if n>99999 and n<1000000:
+    while (n != 0):
+        Proizv = Proizv * (n % 10)
+        n = n // 10
+    print("Произведение цифр числа равно: ", Proizv)
+else:
+    print("Это число не является шестизначным")
