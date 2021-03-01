@@ -1,0 +1,15 @@
+sp = [1, 20]
+stepen1 = int(input("Первая степень: "))
+stepen2 = int(input("Вторая степень: "))
+newsp = []
+
+
+def inc(sp, stepen1, stepen2, newsp):
+    for i in range(sp[0], sp[1]):
+        if i % 2 != 0:
+            j = ((i ** stepen1) ** stepen2)
+             newsp.append(j)
+    return newsp
+
+
+print(inc(sp, stepen1, stepen2, newsp))

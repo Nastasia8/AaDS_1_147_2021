@@ -1,0 +1,7 @@
+sp = [7, 1, 3, 4, 3, 9, 14, -5, -17, -13, -19, -18]
+sum = 0
+while sp != []:
+    if sp[0] < 0:
+        sum += sp[0]
+    del sp[0]
+print(sum)
