@@ -1,16 +1,13 @@
-a = int(input("Введите число: "))
+list = []
+def Func():
+    a = int(input('Введите число:'))
+    while a > 1:
+        if a % 2 == 0:
+            a = a / 2
+            list.append(a)
+        elif a % 2 != 0:
+            a = (a * 3 + 1) / 2
+            list.append(a)
+    return a, list 
 
-
-def func(a):
-    while a > 0:
-        if a % 2:
-            print(a / 2)
-            return
-        else:
-            print(((a*3)+1)/2)
-            return
-    else:
-        print('Что-то тут не так')
-
-
-func(a)
+print(Func())               
