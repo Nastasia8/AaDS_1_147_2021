@@ -1,0 +1,11 @@
+text="Hello hi how hello are and you I am fine thank you and you hello You Thank And".lower().split()
+b={}
+for a in text:
+    if a in b:
+        b[a]+=1
+    else:
+        b[a]=1
+print(b)
+for word in text:
+    b[word]=b.get(word,0)+1
+print(b)

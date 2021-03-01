@@ -1,0 +1,8 @@
+dictionary = {'number1': 35, 'number2': -17, 'number3': 18, 'number4': 46}
+proizvedenie = 1
+summa = 0
+for number in dictionary:    
+    proizvedenie*= dictionary[number]
+    summa+= dictionary[number]
+
+print("Произведение = ",proizvedenie,"Сумма =",summa)
