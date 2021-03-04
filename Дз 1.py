@@ -26,7 +26,7 @@ elif operation == "/":
     if (y==0):
         print ("Ошибка")
     else:
-        delenie = round(x/y, 2)
+       delenie = round(x/y, 2)
     print("Деление",delenie)
 elif operation == "*":
     umnoz = round(x*y, 2)
@@ -34,9 +34,6 @@ elif operation == "*":
 elif operation == "**":
     step = round(x**y, 2)
     print("Степень",step)
-else:
-    y = 0
-    print("Ошибка")
 #1.4
 def calc(m):
     i = 15
@@ -60,7 +57,7 @@ def func_1(res, n):
     return(res)
 
 def func_2(res, n):
-    while n < k:
+    while n < k+1:
         res *= (-1)**(n-1)+n
         n += 1
     return(res)
@@ -70,7 +67,6 @@ print('Произведение = ', round(func_2(1, 1), 2))
 #1.6
 spis = []
 n = 2
-while n:
     for i in range(n):
         k = int(input('Введите число:'))
         spis.append(k)
@@ -140,7 +136,7 @@ spisupd = []
 def inc(spis, step1, step2, spisupd):
     for i in range(spis[0], spis[1]):
         if i % 2 != 0:
-            j = ((i ** step1) ** step2)
+            j = (i ** step1) ** step2
             spisupd.append(j)
     return spisupd
 
