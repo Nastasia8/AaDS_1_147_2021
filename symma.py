@@ -3,7 +3,7 @@ number = int(input())
 result = 0
 
 def proizveden(result, n):
-    while n < number:
+    while n <= number:
         result *= (-1)**(n-1)+n
         n += 1
     return(result)

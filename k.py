@@ -10,8 +10,8 @@ def func(k):
             i = i + 1
         else:
             k = (k * 3 + 1) / 2
-            res.insert(i, int(k))
-            i = i + 1
+        res.insert(i, int(k))
+        i = i + 1
     res = [i for i in res if i != 0]
     return(res)
 print(func(k))
