@@ -88,3 +88,32 @@ for i in range(0,N):
         print('yes')
     else:
         print('no')
+
+#Задание 7
+n = int(input())
+nums1 = []
+nums2 = []
+inteng = 10
+for i in range(n):
+    nums1.append(input())
+for i in nums1:
+    nums2.append(i)
+print('Initial array:')
+print(', '.join(nums1))
+for i in range(len(nums1[0])):
+    print('**********')
+    print('Phase', i+1)
+    buck = [[] for k in range(inteng)]
+    for k in nums2:
+        buck[int(k)//10**i % 10].append(k)
+    nums2 = []
+    for k in range(inteng): 
+        nums2 = nums2+buck[k]
+        print('Bucket', k, end=": ")
+        if len(buck[k]) == 0:
+            print('empty')
+        else:
+            print(', '.join(map(str, buck[k])))      
+print('**********')
+print('Sorted array:')
+print(', '.join(map(str, nums2)))
