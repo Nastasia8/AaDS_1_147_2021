@@ -35,11 +35,10 @@ def reducibility(a=int(input("Введите натуральное число\n
         b.append(a)
         while a!=1 and a>0:
             if a%2==0:
-                a=a/2
-                b.append(a)
+                a=a//2
             else:
-                a=a*3+1
-                b.append(a)
+                a=(a*3+1)//2
+            b.append(a)
         print (b)
     else:
         print("Введите натуральное числа")
@@ -60,7 +59,7 @@ def func(matrix):
     for x in matrix:
         for i in range(len(x)//2):
             x[i],x[-i-1]=x[-i-1],x[i]
-    print(matrix)
+    print(*matrix, end=" ")
 func(m)
 
 #Задание 5
