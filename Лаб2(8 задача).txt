@@ -1,0 +1,13 @@
+kor=(1, 2, 3, 4, 5, 4, 6, 2, 4, 7, 9, 4, 5, 6, 5, 0, 4, 2)
+element=input("введите значение элемента: ")
+
+def func(kor,element):
+    if element in kor:
+        if kor.count(element)>1:
+            first_ind=kor.index(element)
+            last_int=kor.index() 
+            return kor[first_ind:last_int]
+        else:
+            return kor[first_ind:]
+    else:
+        print("символа в кортеже нет")

@@ -1,0 +1,63 @@
+1задача:
+n = int(input())
+arr = [int(num) for num in input().split()]
+k = True
+for i in range(n-1):
+    for j in range(n-1-i):
+        if arr[j] > arr[j+1]:
+            arr[j],arr[j+1]=arr[j+1],arr[j]
+            k = False
+            for l in range(n):
+                print(arr[l], end = " ")
+if k==True:
+    print(0)
+
+2задача:
+n=int(input())
+matr=[]
+for a in range(n):
+    key,value= map(int,input().split())
+    matr.append([key,value])
+
+
+for a in range(n-1):
+    for i in range(n-1-a):
+        if matr[i][1] < matr[i+1][1]:
+            matr[i], matr[i+1] = matr[i+1], matr[i]
+        if matr[i][1] == matr[i+1][1] and matr[i][0] > matr[i+1][0]:
+            matr[i], matr[i+1] = matr[i+1], matr[i]
+
+
+
+[print(a[0], a[1]) for a in matr]
+
+5задача:
+d={}
+n=int(input())
+a=input()
+arr=a.split()
+for i in arr:
+	d[int(i)]=1
+print(len(d))
+
+6 задача
+def func():
+    n = int(input())
+    c = list(map(int, input().split()))
+    k = int(input())
+    p = list(map(int, input().split()))
+    
+    d = {}
+
+    for elem1 in range(n):
+        d[elem1+1] = c[elem1]
+    for elem2 in p:
+        d[elem2] += -1
+    for a in range(1, n+1):
+        if d[a] < 0:
+            print("yes")
+        else:
+            print("no")
+
+func()
+
