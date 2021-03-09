@@ -1,14 +1,14 @@
 from math import pi, sqrt
 
-def frequency():
-    T = float(input("Введите T\n"))
+T = float(input("Введите T\n"))
+m = float(input("Введите m\n"))
+k = float(input("Введите k\n"))
+def frequency(T):
     w = ((2 * pi)/T)
-    print(w)
-def period():
-    m = float(input("Введите m\n"))
-    k = float(input("Введите k\n"))
+    print("frequency: {0:1.3f}".format(w))
+def period(m,k):
     T = 2*pi*(sqrt(m/k))
-    print(T)
+    print("period: {0:1.3f}".format(T))
     
-frequency()
-period()
+frequency(T)
+period(m,k)
