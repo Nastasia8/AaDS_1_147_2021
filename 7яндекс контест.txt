@@ -2,7 +2,7 @@ array = []
 long = int(input())
 
 for i in range(long):
-	array.append(input())
+    array.append(input())
 
 print("Initial array:")
 
@@ -13,25 +13,26 @@ count = len(array[0])
 phase=0
 rang=10
 for i in range(count-1,-1,-1):
-	phase+=1
-	print('**********')
-	print(f'Phase {phase}')
-	box = [[] for _ in range(rang)]
-	for j in range(len(array)):
-		box[ord(array[j][i]) - ord('0')].append(array[j])
-		for j in range(rang):
-			if len(box[j])==0:
-				print(f'Box {j}: empty')
-			else:
-				print("Box "+str(j)+": ", end='')
-				for now in range(len(box[j])-1):
-					print(box[j][now],end=', ')
-				print(box[j][len(box[j])-1])
-	p = 0
-	for j in range(rang):
-		for k in range(len(box[j])):
-			array[p] = box[j][k]
-			p += 1
+    phase+=1
+    print('**********')
+    print(f'Phase {phase}')
+    bucket = [[] for _ in range(rang)]
+    for j in range(len(array)):
+        bucket[ord(array[j][i]) - ord('0')].append(array[j])
+ 
+    for j in range(rang):
+        if len(bucket[j])==0:
+            print(f'Bucket {j}: empty')
+        else:
+            print("Bucket "+str(j)+": ", end='')
+            for now in range(len(bucket[j])-1):
+                print(bucket[j][now],end=', ')
+            print(bucket[j][len(bucket[j])-1])
+    p = 0
+    for j in range(rang):
+        for k in range(len(bucket[j])):
+            array[p] = bucket[j][k]
+            p += 1
 
 print('**********')
 print("Sorted array:")
