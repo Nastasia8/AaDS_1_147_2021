@@ -14,7 +14,7 @@ def func(N, mass):
     return(print(k))
 
 mass =[]
-N = int(input())
+N = 10
 i = 0
 
 while i < N:
