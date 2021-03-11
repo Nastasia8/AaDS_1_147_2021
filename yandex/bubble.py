@@ -12,7 +12,7 @@ def func(N, mass):
     return(print(str(mass)))
 
 mass =[]
-N = int(input())
+N = 10
 i = 0
 
 while i < N:
