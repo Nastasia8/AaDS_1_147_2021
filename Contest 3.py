@@ -1,5 +1,4 @@
 
-
 def merge_sort(Numbers_2, Numbers):
 
     if len(Numbers_2) > 1:
@@ -36,11 +35,12 @@ def merge_sort(Numbers_2, Numbers):
         max_index = Numbers.index(Numbers_2[0])
         min_index = Numbers.index(Numbers_2[0])
         while i < len(Numbers_2):
-            if max_index < Numbers.index(Numbers_2[i]):
-                max_index = Numbers.index(Numbers_2[i])
+            a = Numbers.index(Numbers_2[i])
+            if max_index < a:
+                max_index = a
 
-            if min_index > Numbers.index(Numbers_2[i]):
-                min_index = Numbers.index(Numbers_2[i])
+            if min_index > a:
+                min_index = a
             i += 1
 
         print(min_index+1, max_index+1, Numbers_2[0], Numbers_2[-1])

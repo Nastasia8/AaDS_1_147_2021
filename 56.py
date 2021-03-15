@@ -1,45 +1,51 @@
-Numbers = [5, 4, 3, 2, 1]
+def merge_sort(Numbers_2, Numbers):
 
+    if len(Numbers_2) > 1:
+        mid = len(Numbers_2)//2
+        left = Numbers_2[:mid]
+        right = Numbers_2[mid:]
 
-def mergeSort(alist):
-
-    if len(alist) > 1:
-        mid = len(alist)//2
-        lefthalf = alist[:mid]
-        righthalf = alist[mid:]
-
-        mergeSort(lefthalf)
-        mergeSort(righthalf)
+        merge_sort(left, Numbers)
+        merge_sort(right, Numbers)
 
         i = 0
         j = 0
         k = 0
-        while i < len(lefthalf) and j < len(righthalf):
-            if lefthalf[i] < righthalf[j]:
-                alist[k] = lefthalf[i]
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                Numbers_2[k] = left[i]
                 i = i+1
             else:
-                alist[k] = righthalf[j]
+                Numbers_2[k] = right[j]
                 j = j+1
             k = k+1
 
-        while i < len(lefthalf):
-            alist[k] = lefthalf[i]
+        while i < len(left):
+            Numbers_2[k] = left[i]
             i = i+1
             k = k+1
 
-        while j < len(righthalf):
-            alist[k] = righthalf[j]
+        while j < len(right):
+            Numbers_2[k] = right[j]
             j = j+1
             k = k+1
-        if Numbers.index(alist[-1])+1 > Numbers.index(alist[0])+1:
-            print(Numbers.index(
-                alist[0])+1, Numbers.index(alist[-1])+1, alist[0], alist[-1])
-        else:
-            print(Numbers.index(alist[-1])+1,
-                  Numbers.index(alist[0])+1, alist[0], alist[-1])
 
+        i = 1
+        max_index = Numbers.index(Numbers_2[0])
+        min_index = Numbers.index(Numbers_2[0])
+        while i < len(Numbers_2):
+        	b = Numbers.index(Numbers_2[i])
+            if max_index < b:
+                max_index = Numbers.index(Numbers_2[i])
 
-alist = Numbers
-mergeSort(alist)
-print(*alist)
+            if min_index > b:
+                min_index = b
+            i += 1
+
+        print(min_index+1, max_index+1, Numbers_2[0], Numbers_2[-1])
+
+Num = input()
+Numbers = list(map(int, input().split()))
+Numbers_2 = Numbers
+merge_sort(Numbers_2, Numbers)
+print(*Numbers_2)
