@@ -1,0 +1,130 @@
+задача 1
+s= "Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant whitespace. Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects. Python is dynamically-typed and garbage-collected."
+s=s.lower()
+kp=s.count('p')
+ko=s.count('o')
+print(kp,ko)
+
+задача 2
+from math import *
+def zch(kj,m):
+    if kj/m>0:
+        return sqrt(kj/m)
+    else:
+        return 0
+def t(kj,m):
+    if m/kj>0:
+        return 2*pi*sqrt(m/kj)
+    else:
+        return 0
+m=float (input ())
+kj=float (input())
+print(zch(kj,m),t(kj,m))
+
+задача 3
+def mat(x,y,n):
+    if n==1:
+        return x+y
+    if n==2:
+        return x*y
+    if n==3:
+        if y!=0:
+            return x/y
+    else:
+        return 0
+    if n==4:
+        return x-y
+    if n==5:
+        p=1
+        for i in range(1,y+1):
+            p1*=x
+        return p1
+print (mat(5,2,6))
+
+задача 4
+def su(p1,i1,m,n):
+    return p1*(i1+(1//100)/(m/12))**(m/(12*n))
+p=float(input())
+n=int(input())
+i=0.15
+s=p
+for m in range (3,n*12+1,+3):
+    if m!=9:
+        s+=su(p,i,m,n)
+print (s)
+
+задача 5
+def s(k):
+    s1=0
+    for n in range (1,k+1):
+        s1+=2/((2*n+1)*(2*n+3))
+    return s1
+def pr(k):
+    p=1
+    for n in range (1,k+1):
+        p*=(-1)**(n-1)+n
+    return p
+k=int(input())
+print (s(k), pr(k))
+
+задача 6
+def sch(a,b):
+    s=0
+    if a%2==1:
+        a+=1
+    for i in range (a,b+1,+2):
+        s+=i
+    return s
+a=int(input())
+b=int(input())
+print (sch(a,b))
+
+задача 7
+from math import sqrt
+def kvur(x,y,z):
+    d=y**2-4*x*z
+    if d>0:
+        x1=(-y+sqrt(d))/(2*x)
+        x2=(-y-sqrt(d))/(2*x)
+        return x1,x2
+    elif d==0:
+        return -y/(2*x)
+    else:
+        return "корней нет"
+print (kvur (-1,9,3))
+
+задача 8
+def six(x):
+    if 10**5<=x<10**6:
+        p=1
+        while x>0:
+            p*=x%10
+            x=x//10
+        return p
+    else:
+        return "не 6значное число"
+print (six(123456))
+
+задача 9
+sp = [7, 1, 3, 4, 3, 9, 14, -5, -17, -13, -19, -18]
+i=0
+so=0
+while i<len(sp):
+    if sp[i]<0:
+        so+=sp[i]
+    i+=1
+print (so)
+
+задача 10
+def change (x,y,z):
+    for i  in range (0,20,+2):
+        x[i]=x[i]**(y*z)
+    return x
+x=[]
+for i in range (1,20+1):
+    x.append(i)
+print (x)
+y=int(input())
+z=int(input())
+x1=change(x,2,4)
+print (x1)
