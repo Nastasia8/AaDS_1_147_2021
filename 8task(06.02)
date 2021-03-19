@@ -1,0 +1,17 @@
+num = int(input('Введите число: '))
+pro = 1
+d = num
+k = 1
+while d // 10 > 0:
+    k += 1
+    d = d // 10
+if k == 6:
+    while num > 0:
+        digit = num % 10
+        pro = pro * digit
+        num = num // 10
+    print("Произведение:", pro)
+print("Количество цифр:", k)
+if k != 6:
+    print("Ошибка")
+22

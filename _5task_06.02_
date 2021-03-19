@@ -1,0 +1,16 @@
+k = float(input())
+def sum(s,n):
+s = 0
+while n < k:
+s = 2/((2*n+1)(2*n+3))
+n = n + 1
+print(s)
+sum()
+
+def proizv(p,n):
+p = 1
+while n < k:
+p = ((-1)**(n-1)) + n
+n = n + 1
+print(p)
+proizv()

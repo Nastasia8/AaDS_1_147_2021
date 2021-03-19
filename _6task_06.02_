@@ -1,0 +1,15 @@
+sp = []
+n = 2
+while n:
+    for i in range(n):
+        k = int(input('Введите число:'))
+        sp.append(k)
+
+    sum = 0
+    for i in range(sp[0], sp[1]+1):
+        if i % 2 == 0:
+            sum += i
+    print(sum)
+    break
+print('Завершение')
+

@@ -1,0 +1,22 @@
+ ##создать функцию НОК(x,y)
+ 
+def HOK(x, y):
+
+      if x > y:
+              max = x
+      else:
+              max = y
+
+      while(True):
+              if((max % x == 0) and (max % y == 0)):
+                      HOK = max
+                      break
+              max += 1
+
+      return HOK
+
+num1 = int("54")
+num2 = int("24")
+
+print("The HOK of", num1,"and", num2,"is", HOK(num1, num2))
+
