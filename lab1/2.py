@@ -8,12 +8,19 @@ def main():
 
 
 def frequency(T):
-    
-    w = ((2 * pi)/T)
-    print(w)
+    if T==0:
+        print("error(T = 0)")
+    else:
+         w = ((2 * pi)/T)
+         print(w)
+   
 def period(m,k):
+    if k==0:
+        print("error(k = 0)")
+    else:
+         T = 2*pi*(sqrt(m/k))
+         print(T)   
   
-    T = 2*pi*(sqrt(m/k))
-    print(T)
+    
     
 main()     
