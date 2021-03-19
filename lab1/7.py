@@ -14,9 +14,13 @@ def calc(x, y, z):
         f1 = -y/(2*x)
         print(f1)
      if D >= 0:
-        f1 = (-y + sqrt(D))/(2*x)
-        f2 = (-y - sqrt(D))/(2*x)
-        print(round(f1, 3),round(f2, 3))
+         if x == 0:
+             print("error (x = 0)")
+         else:
+             f1 = (-y + sqrt(D))/(2*x)
+             f2 = (-y - sqrt(D))/(2*x)    
+        
+             print(round(f1, 3),round(f2, 3))
 
 
 main()
