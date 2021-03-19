@@ -10,10 +10,11 @@ def calc(x, y, z):
      D = y**2-4*x*z
      if D < 0:
         print("Корней нет")
-     if D == 0:
+     elif D == 0:
         f1 = -y/(2*x)
         print(f1)
-     if D >= 0:
+     else:
+         
          if x == 0:
              print("error (x = 0)")
          else:
