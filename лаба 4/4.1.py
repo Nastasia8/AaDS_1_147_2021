@@ -1,22 +1,15 @@
-print("Введи числа для проверки")
-a = int(input())
-b = int(input())
+def main():
+    print("Введи числа для проверки")
+    a = int(input())
+    b = int(input())
+    gcd(a,b)
 
-while a != 0 and b != 0:
-    
-    if (a > b) and (a%b==0):
-        a %= b
-        sum = a + b
-        print(sum)  
-       
-    if (a<b) and (b%a==0): #nteger division or modulo by zero надо как-то пофиксить
-        b %= a
-        sum = a + b
-        print(sum)  
+def gcd(two, one):
+    while one != 0:
+        (two, one) = (one, two % one)
+    print(two)
 
-    else:
-        print("нет общего делителя")
-        break
+main()   
 
       
        
