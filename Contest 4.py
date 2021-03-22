@@ -1,4 +1,3 @@
-
 def merge_sort(Numbers_2, Count):
 
     if len(Numbers_2) > 1:
@@ -16,7 +15,7 @@ def merge_sort(Numbers_2, Count):
             else:
                 Numbers_2[k] = right[j]
                 j = j+1
-                Count += 1
+                Count += len(left)-i
             k = k+1
         while i < len(left):
             Numbers_2[k] = left[i]
@@ -33,4 +32,5 @@ def merge_sort(Numbers_2, Count):
 Count = 0
 Num = int(input())
 Numbers = list(map(int, input().split()))[:Num]
-print(merge_sort(Numbers, Count))
+Count = merge_sort(Numbers, Count)
+print(Count)
