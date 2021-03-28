@@ -34,3 +34,45 @@ for i in range(len(a)-1):
 
 for i in range(len(a)):
     print(*a[i])
+
+#sort 3
+N = int(input())
+numbers = [int(i) for i in input().split()][:N]
+
+def merge_two_lists(left, right):
+    a = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            a.append(left[i])
+            i += 1
+        else:
+            a.append(right[j])
+            j += 1
+            
+    if i < len(left):
+        a += left[i:]
+    if j < len(right):
+        a += right[j:]
+
+    index_left = i + 1
+    index_left_value = a[i]
+
+    index_right = j + 1
+    index_right_value = a[j]
+
+    print(index_left, index_right, index_left_value, index_right_value)
+    
+    return a
+
+def merge_sort(numbers):
+    if len(numbers) == 1:
+        return numbers
+
+    middle = len(numbers)//2
+    left = merge_sort(numbers[:middle])
+    right = merge_sort(numbers[middle:])
+    return merge_two_lists(left, right)
+
+print(*merge_sort(numbers))
+
