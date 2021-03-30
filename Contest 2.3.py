@@ -12,13 +12,11 @@ def preph(s):
 
 
 s = input()
-t = s
-for i in range(len(t)):
-    s_t = t+"$"+s
-    p = preph(s_t)
-    t = t[1:]
-Sum = sum(p)
-if len(s) % Sum == 0 and s[:len(s)//Sum]*Sum == s:
-    print(sum(p))
+s_t = s+"$"+s
+a = preph(s_t)
+p0 = a[-1]-a[len(s)-1]
+p = len(s)//p0
+if s[:p0]*p == s:
+    print(p)
 else:
     print(1)
