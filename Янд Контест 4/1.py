@@ -49,7 +49,7 @@ def psp(line):
     return p
 
 def main():
-    text = "))((("
+    text = input()
     print(psp(text))
 
 main()    
