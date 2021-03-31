@@ -1,0 +1,38 @@
+Задача1:
+
+s = input()
+stack = []
+k=0
+for i in s:
+    if i ==")":
+        if not stack or stack[-1]!="(":
+            k+=1
+            continue
+        stack.pop()
+    else:
+        stack.append(i)
+print(k+len(stack))
+
+Задача2:
+
+N=input()
+Railways_A=list(map(int, input().split()))
+Railways_B=[]
+stack=[]
+a=1 
+for i in Railways_A:
+    if i!=a:
+        stack.append(i)
+        continue
+    Railways_B.append(i)
+    a+=1 
+    for j in range(len(stack)):
+        if stack[-1] == a:
+            Railways_B.append(a)
+            stack.pop()
+            a += 1
+if Railways_B[-1] == int(N):
+    print("YES")
+else:
+    print("NO")
+        
