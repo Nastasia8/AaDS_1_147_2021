@@ -1,4 +1,4 @@
-s = '))((('  # input()
+s = input()
 stack = []
 is_p_c_p = 0
 for i in s:
@@ -10,7 +10,3 @@ for i in s:
     else:
         stack.append(i)
 print(is_p_c_p+len(stack))
-if is_p_c_p and not stack:
-    print("Yes")
-else:
-    print("None")
