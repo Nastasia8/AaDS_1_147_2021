@@ -46,23 +46,3 @@
 # else:
 #     print('NO')
 
-l = int(input())
-road1 = list(map(int, input().split()))
-road2 = []
-stack = []
-i = 1
-for a in road1:
-    if a != i:
-        stack.append(a)
-        continue
-    road2.append(a)
-    i += 1
-    for z in range(len(stack)):
-        if stack[-1] == i:
-            road2.append(i)
-            stack.pop()
-            i += 1
-if road2[-1] == int(l):
-    print("YES")
-else:
-    print("NO")
