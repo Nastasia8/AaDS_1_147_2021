@@ -1,22 +1,21 @@
-def func(s):
-    z = ()
-    z = len(s)
-    l = 0
-    r = 0
-    i = 1
-    for i in range( i < len(s)):
-        if (i <= r):
-            z[i] = min(r - i + 1, z[i-l])
-        while  (i+z[i] < len(s)) and (s[z[i] + i]):
-            z[i] = z[i] + 1
-        if (i + z[i] - 1 > r):
-            l = i
-            r = i + z[i] - 1
-    return z    
+def prefix(s):
+    v = [0]*len(s)
+    for i in range(len(s)-1):
+        k = v[i]
+        while k > 0 and s[k] != s[i+1]:
+            k = v[k-1]
+        if s[i+1] == s[k]:
+            v[i+1] = k+1
+        else:
+            v[i+1] = 0
+        
+    return v
 
 def main():
-    s = input()
-    print(func(s))
-  
+    s=input()
+    s_t = s +"$" + s
+    a = prefix(s_t)
+    end = a[-1] - a[len(s)-1]
+    print(end) 
 
-main()       
+main()    
