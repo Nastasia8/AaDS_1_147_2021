@@ -1,39 +1,42 @@
-import operator
 def main():
      n = int(input())
-     m =[]
-     m = list(map(int,input().split()))
-     sort(m)
+     m = list(map(int,input().split()))[:n]
+     sort(m, 0, len(m))
+     print(*m," ")
 
 
-def sort(arr, compare=operator.lt):
-    if len(arr) < 2:
-        return arr
-    else:
-        mid = len(arr)//2
-        left = sort(arr[:mid], compare)
-        right = sort(arr[mid:], compare)
-        print (mid,mid+1, right[0], left[-1])
-        return merge(left,right, compare)
-def merge(left, right, compare):
-    massiv = []
+def sort(m, arrst, arren):
+    if arren - arrst > 1:
+        mid = (arrst + arren) // 2
+        sort(m, arrst, mid)
+        sort(m, mid, arren)
+        right = m[arrst:mid]
+        left = m[mid:arren]
+        merge(m, left, right, arrst)
+        print(arrst + 1, arren, m[arrst], m[arren-1])
+
+    
+  
+def merge(arr, left, right, arrst):
     i, j = 0, 0
-    while i < len(left) and j < len(right):
-        if compare(left[i], right[j]):
-            massiv.append(left[i])
+    t = arrst
+    while i < len(right) and j < len(left):
+        if left[j] > right[i]:
+            arr[t] = right[i]
             i+=1
         else:
-            massiv.append(right[j])
+            arr[t] = left[j]
             j+=1
-    while i < len(left):
-        massiv.append(left[i])
-        i+=1
-    while j < len(right):
-        massiv.append(right[j])
+        t+=1      
+    while j < len(left):
+        arr[t] = left[j]
         j+=1
-    for i in massiv:
-                    
-                    print(i, end=' ')
+        t+=1   
+    while i < len(right):
+        arr[t] = right[i]
+        i+=1
+        t+=1   
+   
     
 
 main()    
