@@ -5,7 +5,7 @@ def get_hash(s,x,p):
     return hs
 def fun (s,t,x,p):
     if s!=t:
-        k=1 
+        k=0 
         t=t[1:]+t[0]#bcdza
         hs=get_hash(s,x,p)
         ht=get_hash(t,x,p)
@@ -13,6 +13,7 @@ def fun (s,t,x,p):
         for i in range (len(s)-1):
             xt=(xt*x)%p
         for i in range (len(t)-1):
+            k+=1
             if hs==ht:
                 break
             else:
