@@ -1,25 +1,24 @@
-def search (s):
-    array=[0]*len(s) 
+def z_fun (s):
+    arr=[0]*len(s)
     l=r=0 
     for i in range(1,len(s)):
         if i<=r:
-            array[i]=min(array[l-1],r-i+1)
-        while array[i]+i<len(s) and s[array[i]]==s[array[i]+i]:
-            array[i]+=1
-        if array[i]+i-1>r:
+            arr[i]=min(arr[i-l],r-i+1)
+        while arr[i]+i<len(s) and s[arr[i]]==s[arr[i]+i]:
+            arr[i]+=1
+        if arr[i]+i-1>r:
             l=i
-            r=array[i]+i-1
-    return array
+            r=arr[i]+i-1
+    return arr
     
     
     
 def main ():
-    s = input()
-    t = input()
-    s_t = t+'#'+s
-    z=search(s_t)
+    s=input()
+    t=input()
+    s_t=t+'#'+s
+    z=z_fun(s_t)
     for i in range(len(z)):
         if z[i]==len(t):
-            print(i-len(t)-1,end = ' ')
-
+            print (i-len(t)-1,end=' ')
 main()
