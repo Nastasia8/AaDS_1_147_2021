@@ -1,0 +1,28 @@
+#Всё равно ошибка TL
+def preph(m):
+    p=[0]*len(m)
+    for i in range(len(m)-1):
+        v=p[i]
+        while v>0 and m[i+1]!=m[v]:
+            v=p[v-1]
+        if m[i+1]==m[v]:
+            p[i+1]=v+1
+        else:
+            p[i+1]=0
+    return p
+def main():
+    lst_1 = input()
+    lst_2 = input()
+    itog = lst_2+"&"+lst_1
+    check = preph(itog)
+    lst_2 = lst_2[-1:]+lst_2[:-1]
+    if lst_2 == lst_1:
+        if check[-1] == 0:
+            print(-1)
+        elif check[-1] == len(lst_1):
+            print(0)
+        else:
+            print(check[-1])
+    else:
+        print(-1)
+main()

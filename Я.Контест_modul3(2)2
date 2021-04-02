@@ -1,0 +1,20 @@
+# Теперь TL, никак не исправить?
+lst_1 = input()
+lst_2 = input()
+lst_1 = lst_1.lower()
+lst_2 = lst_2.lower()
+lst = lst_1.split()
+check = len(lst)
+for st in lst:
+    if lst_2.find(st) != -1:
+        check = check - 1
+    else:
+        for i in range(1,len(lst_1)):
+            lst_1 = lst_1[-1] + lst_1[:-1]
+            if lst_1 == lst_2:
+                print(i)
+                break
+        else:
+            print (-1)
+if check == 0:
+    print(0)
