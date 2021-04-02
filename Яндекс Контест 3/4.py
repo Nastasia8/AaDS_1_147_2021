@@ -1,3 +1,4 @@
+
 def prefix(s):
     v = [0]*len(s)
     for i in range(len(s)-1):
