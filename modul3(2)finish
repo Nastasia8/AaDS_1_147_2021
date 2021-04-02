@@ -1,0 +1,33 @@
+def hash_get(m,x,p):
+    hash=0
+    for i in range(len(m)):
+        hash=(hash*x+ord(m[i]))%p
+    return hash
+def fun(m,t,x,p):
+    if m!=t:
+        k=1
+        t=t[1:]+t[0]
+        hash=hash_get(m,x,p)
+        ht=hash_get(t,x,p)
+        xt=1
+        for i in range(len(m)-1):
+            xt=(xt*x)%p
+        for i in range(len(t)-1):
+            if hash==ht:
+                break
+            else:
+                ht=(x*(ht-ord(t[i])*xt)+ord(t[i]))%p
+                k+=1
+        if hash==ht:
+            print(k)
+        else:
+            print(-1)
+    else:
+        print(0)
+def main():
+    m=input() #zabcd
+    t=input() #abcdz
+    x=26
+    p=1e9+7
+    fun(m,t,x,p)
+main()
