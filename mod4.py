@@ -46,6 +46,65 @@ for i in s:
 
 print(stack[-1])
 
+#задача3 (сортировка фамилий)
+from collections import deque
+n = int(input())
+q1=deque()
+q2=deque()
+q3=deque()
+q4=deque()
+for i in range(n):
+    num, name = map(str,input().split())
+    if int(num)==1:
+        q1.append(name)
+    elif int(num)==2:
+        q2.append(name)
+    elif int(num)==3:
+        q3.append(name)
+    else:
+        q4.append(name)
+
+while q1:
+    print(1,q1.popleft())
+while q2:
+    print(2,q2.popleft())
+while q3:
+    print(3,q3.popleft())
+while q4:
+    print(4,q4.popleft())
+
+#задача4 (пьяница)
+from collections import deque
+
+first=deque(list(map(int,input().split())))
+second=deque(list(map(int,input().split())))
+k=0
+
+while k<1e6 and (len(first)*len(second)):
+    first_card=first.popleft()
+    second_card=second.popleft()
+    if first_card == 0 and second_card == 9:
+        first.append(first_card)
+        first.append(second.card)
+    elif first_card == 9 and second_card == 0:
+        second.append(first_card)
+        second.append(second_card)
+    elif first_card>second_card:
+        first.append(first_card)
+        first.append(second_card)
+    else:
+        second.append(first_card)
+        second.append(second_card)
+    k+=1
+
+if not first:
+    print("second",k)
+elif not second:
+    print("first",k)
+else:
+    print("botva")
+
+
 
 
 #ОСНОВНЫЕ ЗАДАЧИ:
@@ -68,4 +127,24 @@ for i in s:
 print(a+len(stack))
 
 
-#задача2 (я слишком тупая для неё и вообще я боюсь поезда)
+
+#задача2
+from collections import deque
+n=int(input())
+a=deque(list(map(int, input().split(maxsplit=n))))
+b=[]
+deadlock=[]
+res= list(range(1, n+1))
+while a:
+    if not deadlock or deadlock[-1] > a[0]:
+        deadlock.append(a.popleft())
+    if a and deadlock[-1] < a[0]:
+        b.append(deadlock.pop())
+    
+
+while deadlock:
+    b.append(deadlock.pop())
+if b == res:
+    print("YES")
+else:
+    print("NO")
