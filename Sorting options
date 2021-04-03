@@ -65,6 +65,51 @@ def merge(x,y):
 print(*merge_sort(p), end=" ")
 
 
+#Задание 4
+
+def merge_sort(nums):
+    global gg
+    if len(nums) > 1:
+        middle = len(nums) // 2
+        left = nums[:middle]
+        right = nums[middle:]
+        gg = merge_sort(left)
+        gg = merge_sort(right)
+
+        i = j = k = 0
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                nums[k] = left[i]
+                i+=1
+            else:
+                nums[k] = right[j]
+                j+=1
+                gg += len(left) - i
+            k+=1
+
+        while i < len(left):
+            nums[k] = left[i]
+            i+=1
+            k+=1
+
+        while j < len(right):
+            nums[k] = right[j]
+            j+=1
+            k+=1
+    return nums
+
+N=int(input())
+
+p = input().split()[:N]
+p = [int(x) for x in p]
+
+gg = 0
+
+merge_sort(p)
+
+print(gg)
+
+
 #Задание 5
 
 N=int(input())
@@ -91,29 +136,27 @@ for i in range(0,N):
 
 #Задание 7
 n = int(input())
-nums1 = []
-nums2 = []
+nums = []
 inteng = 10
 for i in range(n):
-    nums1.append(input())
-for i in nums1:
-    nums2.append(i)
+    nums.append(input())
 print('Initial array:')
-print(', '.join(nums1))
-for i in range(len(nums1[0])):
+print(', '.join(nums))
+for i in range(len(str(max(nums)))):
     print('**********')
     print('Phase', i+1)
     buck = [[] for k in range(inteng)]
-    for k in nums2:
-        buck[int(k)//10**i % 10].append(k)
-    nums2 = []
-    for k in range(inteng): 
-        nums2 = nums2+buck[k]
+    for k in nums:
+        f = int(k) // 10**i % 10
+        buck[f].append(k)
+    nums = []
+    for k in range(inteng):
+        nums = nums+buck[k]
         print('Bucket', k, end=": ")
         if len(buck[k]) == 0:
             print('empty')
         else:
-            print(', '.join(map(str, buck[k])))      
+            print(', '.join(map(str, buck[k])))
 print('**********')
 print('Sorted array:')
-print(', '.join(map(str, nums2)))
+print(', '.join(map(str, nums)))
