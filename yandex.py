@@ -76,3 +76,11 @@ def merge_sort(numbers):
 
 print(*merge_sort(numbers))
 
+#sort 5
+
+N = int(input())
+
+numbers = [int(i) for i in input().split()][:N]
+
+print(len(set(numbers)))
+
