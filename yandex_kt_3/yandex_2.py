@@ -10,6 +10,5 @@ def func(T, S):
 
 S = str(input())
 T = str(input())
-
 print(func(T, S))
 
