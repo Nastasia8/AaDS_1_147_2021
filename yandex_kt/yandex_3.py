@@ -1,3 +1,9 @@
+def main(): 
+    N = int(input())
+    mass = list(map(int, input().split()))
+    division(mass, 0, N)
+    print(*mass, sep = ' ')
+    
 def division(mass, start, end):
     if end - start > 1:
         half = (start + end) // 2
@@ -13,21 +19,18 @@ def func(mass, left, right, start):
     while i < len(right) and j < len(left):
         if left[j] > right[i]:
             mass[start] = right[i]
-            i= i + 1
+            i += 1
         else:
             mass[start] = left[j]
-            j = j + 1
-        start = start + 1
+            j += 1
+        start += 1
     while i < len(right):   
         mass[start] = right[i]
-        i = i + 1
-        start = start + 1
+        i += 1
+        start += 1
     while j < len(left):
         mass[start] = left[j]
-        j = j + 1
-        start = start + 1 
-        
-N = int(input())
-mass = list(map(int, input().split()))
-division(mass, 0, N)
-print(*mass, sep = ' ')
+        j += 1
+        start += 1 
+
+main()
