@@ -100,8 +100,7 @@ def merge_sort(nums):
 
 N=int(input())
 
-p = input().split()[:N]
-p = [int(x) for x in p]
+p = list(map(int, input().split()))[:n]
 
 gg = 0
 
