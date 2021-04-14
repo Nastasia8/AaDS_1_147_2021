@@ -1,21 +1,36 @@
-def enter():
+def main():
     N = int(input())
-    if 1 <= N <= 100000:
-        A = list(map(int, input().split(maxsplit = N - 1)))
-        func(A)
+    mass = list(map(int, input().split(" ")))
+    mass, result = sort(mass)
+    print(result)
 
-def func(A):
-    k = 0
-    f = 1
-    while f < int(len(A)):
-        i = 0
-        j = f
-        while j < int(len(A)):
-            if i < j and A[i] > A[j]:
-                k = k + 1
-            i = i + 1
-            j = j + 1
-        f = f + 1
-    return(print(k))
+def sort(mass):
+    n = len(mass)
+    if n <= 1:
+        return(mass, 0)
+    half = n//2
+    A, left = sort(mass[:half])    
+    B, right = sort(mass[half:])
+    res, inver = merge(A, B)
+    return(res, inver + left + right)
+    
+def merge(A, B):
+    res = []
+    inver = i = j = 0
+    while i < len(A) and j < len(B):
+        if A[i] <= B[j]:
+            res.append(A[i])
+            i += 1
+        else:
+            res.append(B[j])
+            j += 1
+            inver += len(A) - i
+    while i < len(A):
+        res.append(A[i])
+        i += 1
+    while j < len(B):
+        res.append(B[j])
+        j += 1
+    return(res, inver)    
 
-enter()
+main()
