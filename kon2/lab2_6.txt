@@ -1,0 +1,14 @@
+//Тоже сделал вместе с Владом в классе
+//7 программу вообще не знаю, даже списать ее сложно для меня
+s=int(input())
+pr=list(map(int,input().split()))
+z=int(input())
+order=list(map(int,input().split()))
+count=[0]*(s+1)
+for now in order:
+    count[now]+=1
+for i in range(s):
+    if pr[i]<count[i+1]:
+        print ('yes')
+    else:
+        print ('no')

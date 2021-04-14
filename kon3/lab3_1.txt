@@ -1,0 +1,23 @@
+//В 3 модуле все программы сделаны в классе с Никитой Рыбкиным
+//P.s Были даже моменты, где я помог найти ошибки в программе, но на этом моя польза закончилась
+def fun(q):
+    Q=[0]*len(q)
+    for m in range(len(q)-1):
+        Y=Q[m]
+        while Y>0 and q[m+1]!=q[Y]:
+            Y=Q[Y-1]
+        if q[m+1]==q[Y]:
+            Q[m+1]=Y+1
+        else:
+            Q[m+1]=0
+    return Q
+def main():
+    q=input()
+    n=input()
+    k=n+'&'+q
+    Q=fun(k)
+    for m in range(len(Q)):
+        if Q[m]==len(n):
+            print(m-2*len(n),end=' ')
+
+main()
