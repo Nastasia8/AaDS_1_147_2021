@@ -1,0 +1,37 @@
+//Писал в классе с Владом
+
+def merge(a, b):
+    res = []
+    k = 0
+    m = 0
+    inver = 0
+    while k < len(a) and m < len(b):
+        if a[k] <= b[m]:
+            res.append(a[k])
+            k += 1
+        else:
+            res.append(b[m])
+            m += 1
+            inver += len(a) - k
+    while k < len(a):
+        res.append(a[k])
+        k += 1
+    while m < len(b):
+        res.append(b[m])
+        m += 1
+    return res, inver
+
+def MergeSort(L):
+    n = len(L)
+    if n <= 1:
+        return L, 0
+    middle = n//2
+    a, l_inver = MergeSort(L[0:middle])    
+    b, r_inver = MergeSort(L[middle:n])
+    res, inver = merge(a, b)
+    return res, inver + l_inver + r_inver     
+
+N = int(input())
+L = list(map(int, input().split(" ")))
+L, itog_inver = MergeSort(L)
+print(itog_inver)

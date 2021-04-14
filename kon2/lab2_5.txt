@@ -1,0 +1,8 @@
+//Та самая редкая программа, которую я написал сам, но с ошибкой, с которой мне помог справиться Никита Рыбкин
+def count():
+    Q = int(input())
+    t = input().split()[:Q]
+    list = set([int(x) for x in t])
+    print(len(list))
+    return 0
+count() 
