@@ -80,21 +80,29 @@ def post_order(tree):
 def g(tree):
     leftt = height(tree.left)
     rightt = height(tree.right)
-    if (leftt-rightt) == 0 or (leftt-rightt) == 1 or (leftt-rightt) == -1:
+    if ((leftt-rightt) == 0 or (leftt-rightt) == 1 or (leftt-rightt) == -1) and leftt != 0 and rightt != 0:
         g(tree.left)
         g(tree.right)
+    elif leftt != 0 and rightt != 0:
+        global t
+        t = False
+        return
 
 
 def main():
-    elements = [7, 3, 2, 1, 9, 5, 4, 6, 8]
+    elements = list(map(int, input().split()))
+    elements.pop(-1)
     tree = build_tree(elements)
-    tree.print()
-    print()
-    print(tree.height)
-    print(height(tree))
-
-    pre_order(tree)
-    g(tree)
+    if len(elements) > 2:
+        global t
+        t = True
+        g(tree)
+        if t:
+            print("YES")
+        else:
+            print("NO")
+    else:
+        print("YES")
 
 
 main()
