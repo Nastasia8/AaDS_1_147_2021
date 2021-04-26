@@ -1,6 +1,6 @@
 def build(v, l, r, it, nums):
-    if r-l <= 2:
-        it[v] = NOD(nums[l], nums[r-1])
+    if r-l == 1:
+        it[v] = nums[l]
         return
     m = (r+l)//2
     build(2*v+1, l, m, it, nums)
@@ -18,10 +18,10 @@ def NOD(a, b):
 
 
 def get_NOD(v, l, r, it, ql, qr):
-    if qr-ql <= 2:
+    if ql <= l and qr >= r:
         return it[v]
-    if ql >= r or qr <= 1:
-        return 1
+    if ql >= r or qr <= l:
+        return 0
     m = (r+l)//2
     tl = get_NOD(2*v+1, l, m, it, ql, qr)
     tr = get_NOD(2*v+2, m, r, it, ql, qr)
