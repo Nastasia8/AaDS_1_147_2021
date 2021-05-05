@@ -36,3 +36,47 @@ if B == res:
     print("YES")
 else:
     print("NO")
+    
+#Задание 3
+n = int(input())
+nums = list(map(int, input().split(maxsplit = n)))
+
+d = {i:nums[i] for i in range (n)}
+
+stack = []
+index = [0] * n
+
+for i in range(n-1, -1, -1):
+    while stack and stack[-1][1] >= d[i]:
+        stack.pop()
+    if not stack:
+        index[i] = -1
+    else:
+        index[i] = stack[-1][0]
+    stack.append([i, d[i]])
+
+print(*index)
+
+
+#Задание 4
+def min(N, K, arr):
+    stack = []
+    for i in range(K):
+        while stack and arr[i] <= arr[stack[-1]]:
+            stack.pop()
+        stack.append(i)
+    for i in range(K, N):
+        print(arr[stack[0]])
+        while stack and arr[i] <= arr[stack[-1]]:
+            stack.pop()
+        while stack and i - K >= stack[0]:
+            stack.pop(0)
+        stack.append(i)
+    print(arr[stack[0]])
+    
+def main():
+    N, K = map(int, input().split())
+    arr = list(map(int, input().split()))
+    min(N, K, arr)
+    
+main()
