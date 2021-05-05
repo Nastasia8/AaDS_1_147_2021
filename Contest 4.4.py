@@ -18,13 +18,13 @@ def get_max(v, l, r, it, ql, qr, k):
     tl = get_max(2*v + 1, l, m, it, ql, qr, k)
     if k != 0 and tl[0] == 0 and ql+1 <= tl[1] and tl[1] <= qr:
         k -= 1
-    elif k == 0:
-        return it[v]
+    elif k == 0 and tl[0] == 0:
+        return tl[v]
     tr = get_max(2*v + 2, m, r, it, ql, qr, k)
     if k != 0 and tr[0] == 0 and ql+1 <= tr[1] and tr[1] <= qr:
         k -= 1
     elif k == 0:
-        return it[v]
+        return [v]
     Max = max(tl[0], tr[0])
     if Max == 0 and k != 0:
         k += 1
