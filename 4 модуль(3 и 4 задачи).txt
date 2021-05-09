@@ -1,0 +1,44 @@
+3 задача:
+
+N = int(input())
+nums = list(map(int, input().split(maxsplit = N)))
+
+d = {i:nums[i] for i in range (N)}
+
+stack = []
+index = [0] * N
+
+for i in range(N-1, -1, -1):
+    while stack and stack[-1][1] >= d[i]:
+        stack.pop()
+    if not stack:
+        index[i] = -1
+    else:
+        index[i] = stack[-1][0]
+    stack.append([i, d[i]])
+
+print(*index)
+
+4 задача:
+
+def minimum(n, k, arr):
+    stack = []
+    for i in range(k):
+        while stack and arr[i] <= arr[stack[-1]]:
+            stack.pop()
+        stack.append(i)
+    for i in range(k, n):
+        print(arr[stack[0]])
+        while stack and arr[i] <= arr[stack[-1]]:
+            stack.pop()
+        while stack and i - k >= stack[0]:
+            stack.pop(0)
+        stack.append(i)
+    print(arr[stack[0]])
+
+def main():
+    n, k = map(int, input().split())
+    arr = list(map(int, input().split()))
+    minimum(n, k, arr)
+
+main()
