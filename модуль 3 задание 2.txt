@@ -1,0 +1,36 @@
+def get_hash(S,x,P):
+    hS = 0
+    for i in range(len(S)):
+        hS = (hS*x + ord(S[i]))%P
+    return hS
+
+def func(S,t,x,P):
+    if S != t:
+        k = 1
+        t = t[1:] + t[0]
+        hS = get_hash(S, x, P)
+        ht = get_hash(t, x, P)
+        xt = 1
+        for i in range(len(S)-1):
+            xt = (xt * x) % P
+        for i in range(len(t)-1):
+            if hS == ht:
+                break
+            else:
+                ht=(x*(ht-ord(t[i])*xt) + ord(t[i]))%P  
+                k += 1
+        if hS == ht:
+            print(k)
+        else:
+            print(-1)
+    else:
+        print(0)
+
+def main():
+    S=input() 
+    t=input() 
+    x = 26
+    P = 10 ** 9 + 7
+    func(S, t, x, P)
+
+main()
