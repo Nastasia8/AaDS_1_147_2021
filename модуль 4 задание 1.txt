@@ -1,0 +1,12 @@
+s = input()
+stack = []
+k=0
+for i in s:
+    if i ==")":
+        if not stack or stack[-1]!="(":
+            k+=1
+            continue
+        stack.pop()
+    else:
+        stack.append(i)
+print(k+len(stack))
