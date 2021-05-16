@@ -1,0 +1,35 @@
+def merge(left, right):
+    merge_list = []
+    i = j = 0
+    k = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            merge_list.append(left[i])
+            i += 1
+        else:
+            merge_list.append(right[j])
+            j += 1
+            k += len(left) - i
+    while i < len(left):
+        merge_list.append(left[i])
+        i += 1
+    while j < len(right):
+        merge_list.append(right[j])
+        j += 1
+    return merge_list, k
+
+def MergeSort(A):
+
+    N = len(A)
+    if N <= 1:
+        return A, 0
+    middle = N//2
+    left, left_k = MergeSort(A[0:middle])    
+    right, right_k = MergeSort(A[middle:N])
+    merge_list, k = merge(left, right)
+    return merge_list, k + left_k + right_k     
+
+N = int(input())
+A = list(map(int, input().split(" ")))
+A, result_k = MergeSort(A)
+print(result_k)
