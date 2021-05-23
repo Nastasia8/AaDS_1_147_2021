@@ -6,29 +6,18 @@ def build(v, l, r, it, a):
     m = (l+r)//2
     build(2*v + 1, l, m, it, a)
     build(2*v + 2, m, r, it, a)
-    it[v] = max(it[2*v + 1], it[2*v + 2])
+    it[v] = sum(it[2*v + 1], it[2*v + 2])
 
 
 def get_max(v, l, r, it, ql, qr, k):
     if ql <= l and qr >= r:
         return it[v]
     if ql >= r or qr <= l:
-        return -1e9
+        return 0
     m = (l+r)//2
-    tl = get_max(2*v + 1, l, m, it, ql, qr, k)
-    if k != 0 and tl[0] == 0 and ql+1 <= tl[1] and tl[1] <= qr:
-        k -= 1
-    elif k == 0 and tl[0] == 0:
-        return tl[v]
-    tr = get_max(2*v + 2, m, r, it, ql, qr, k)
-    if k != 0 and tr[0] == 0 and ql+1 <= tr[1] and tr[1] <= qr:
-        k -= 1
-    elif k == 0:
-        return [v]
-    Max = max(tl[0], tr[0])
-    if Max == 0 and k != 0:
-        k += 1
-        return Max
+    tl = get_max(2*v + 1, l, m, it, ql, qr)
+    tr = get_max(2*v + 2, m, r, it, ql, qr)
+    return sum(tl, tr)
 
 
 def update(v, l, r, it, indx, val):
@@ -46,7 +35,12 @@ def update(v, l, r, it, indx, val):
 def main():
     n = int(input())
     it = [-1]*(4*n)
-    a = list(map(int, input().split()))[:n]
+    a = []
+    for i in input().split():
+        if i == 0:
+            a.append(1)
+        else:
+            a.append(0)
     build(0, 0, n, it, a)
     q = int(input())
     res = []
