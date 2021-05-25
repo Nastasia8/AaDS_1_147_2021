@@ -66,7 +66,6 @@
 # main()
 
 class Heap:
-
     __heap = []
 
     @property
@@ -76,6 +75,9 @@ class Heap:
     @property
     def max(self):
         return self.__heap[0]
+
+    def empty(self):
+        return self.length == 0
 
     def shift_down(self, value):
         while 2*value+1 < self.length:
@@ -95,48 +97,40 @@ class Heap:
             self.__heap[value], self.__heap[(
                 value - 1)//2] = self.__heap[(value - 1)//2], self.__heap[value]
             value = (value - 1)//2
-        return value+1
+        return value
 
     def extract(self):
         self.__heap[0], self.__heap[self.length -
                                     1] = self.__heap[self.length-1], self.__heap[0]
         self.__heap.pop()
-        v = self.shift_down(0)
         if self.__heap:
-            return v+1
+            return self.shift_down(0) + 1
         else:
             return 0
 
     def add(self, value):
         self.__heap.append(value)
-        return self.shift_up(self.length-1)
+        return self.shift_up(self.length-1)+1
 
     def show(self):
         print(*self.__heap)
 
 
-def build(arr):
-    heap = arr[:]
-    h = Heap(heap)
-    for i in range(len(heap)-1, -1, -1):
-        h.shift_down(i)
-    return h
-
-
 def main():
     N, M = map(int, input().split())
     heap = Heap()
-    while M != 0:
+    res = []
+    while M:
         q = list(map(int, input().split()))
-        if q[0] == 1 and heap.length != 0:
-            a = heap.max
-            print(heap.extract(), a)
+        if q[0] == 1 and not heap.empty():
+            a = str(heap.max)
+            res.append(str(heap.extract()) + " " + a)
         elif q[0] == 2 and heap.length < N:
-            print(heap.add(q[1]))
+            res.append(heap.add(q[1]))
         else:
-            print(-1)
+            res.append(-1)
         M -= 1
-
+    print(*res, sep="\n")
     heap.show()
 
 
