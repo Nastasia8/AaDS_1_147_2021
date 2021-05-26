@@ -46,11 +46,16 @@ class Heap:
         return self.shift_up(self.length-1)+1
 
     def delete(self, index):
-        a = self.__heap[index]
-        self.__heap[index] = 1e10
-        self.shift_up(index)
-        self.extract()
-        return a
+        del_value = self.__heap[index]
+        last_value = self.__heap[self.length-1]
+        self.__heap[index], self.__heap[self.length -
+                                        1] = self.__heap[self.length-1], self.__heap[index]
+        val = self.__heap.pop()
+        if del_value >= last_value:
+            self.shift_down(index)
+        else:
+            self.shift_up(index)
+        return val
 
     def show(self):
         print(*self.__heap)
