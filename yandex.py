@@ -84,3 +84,16 @@ numbers = [int(i) for i in input().split()][:N]
 
 print(len(set(numbers)))
 
+#sort 6
+
+a = int(input())
+b = list(map(int,input().split()))[:a]
+c = int(input())
+d = list(map(int,input().split()))[:c]
+
+for i in range(a):
+    if b[i] < d.count(i+1):
+        print("yes")
+    else:
+        print("no")
+
