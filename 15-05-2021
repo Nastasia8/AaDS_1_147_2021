@@ -1,0 +1,51 @@
+def shiftUp(v,heap):
+    while heap[v] > heap[(v-1)/2]:
+        heap[v], heap[(v-1)//2] = heap[(v-1)//2], heap[v]
+        v = (v - 1)//2
+
+def shiftDown(v, heap):
+    while 2*v + 1 < len(heap):
+        leftIndex = 2*v + 1
+        rightIndex = 2*v + 2
+        index = 2*v + 1
+        if rightIndex < len(heap) and heap[leftIndex] < heap[rightIndex]:
+            index = rightIndex
+        if heap[index] <= heap[v]:
+            break
+        heap[v], heap[index] = heap[index], heap[v]
+        v = index
+            
+
+def add(value, heap):
+    heap.append(value)
+    shiftUp(-1, heap)
+
+def extract(heap):
+    heap[0], heap[-1] = heap[-1], heap[0]
+    heap.pop()
+    shiftDown(0, heap)
+
+def getMax(heap):
+    return heap[0]
+
+def build(arr):
+    heap = arr[:]
+    for i in range(len(heap) - 1, - 1, - 1):
+        shiftDown(i, heap)
+    return heap
+
+def main():
+    n = int(input())
+    m = [int(i) for i in input().split()]
+    heap = build(m)
+    print(*heap)
+    
+    while len(heap):
+        print(getMax(heap), end=" ")
+        extract(heap)
+    
+main()    
+    
+    
+
+    
