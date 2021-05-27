@@ -1,0 +1,75 @@
+#задача 1 (украдена у кого-то)
+def fun(s):
+    stack=[]
+    k=0
+    for i in range(len(s)):
+        if (s[i]=='('): 
+            stack.append(s[i])
+        elif (stack!=[]) and (stack[len(stack)-1]=='('):
+            stack.pop() 
+        else:
+            k+=1 
+    return k+len(stack)
+s=input() 
+print(fun(s))
+
+#задача 2 (моя, но с ошибкой)
+n=int(input())
+a=[]
+for i in range(n):
+    a.append(int(input()))
+t=[]
+b=[]
+while len(a)>0:
+    ixmin=a.index(min(a))
+    c=[]
+    for i in range (ixmin,0-1,-1):
+        c.append(a[i])
+        a.remove(a[i])
+    index=0
+    c.extend(t)
+    t=c
+    for i in range(len(t)-1):
+        if t[i]+1==t[i+1]:
+            index=i+1
+        else:
+            break
+    for i in range(0,index+1):
+        b.append(t[i])
+    for i in range(index,0-1,-1):
+        t.remove(t[i])
+if len(b)==n:
+    print("YES")
+else:
+    print("NO")
+    
+#задача 3 (моя)
+a=[]
+n=int(input())
+b=[]
+a= list(map(int,input().split()))
+for i in range(n):
+    k=0
+    for j in range(i+1,n):
+        if a[j]<a[i]:
+            k+=1
+            b.append(j)
+            break
+        if k==0:
+            b.append(-1)
+print(b)
+
+#задча 4 (моя) 
+n,k=map(int,input().split())
+b=[]
+a=[]
+a=list(map(int,input().split()))
+for i in range(k):
+    b.append(a[i])
+for i in range(k,n):
+    print(min(b))
+
+    for j in range(k-1):
+        b[j]=b[j+1]
+    b[k-1]=a[i]
+print(min(b))
