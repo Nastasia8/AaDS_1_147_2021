@@ -1,0 +1,61 @@
+#взято у Влада Метелева
+#задача 1
+def preph(m): #создаем функцию
+    p=[0]*len(m) 
+    for i in range(len(m)-1): 
+        v=p[i]
+        while v>0 and m[i+1]!=m[v]:
+            v=p[v-1]
+        if m[i+1]==m[v]:
+            p[i+1]=v+1
+        else:
+            p[i+1]=0
+    return p
+def main():
+    m=input()
+    t=input()
+    itog=t+'&'+m
+    p=preph(itog)
+    for i in range(len(p)):
+        if p[i]==len(t):
+            print(i-2*len(t),end=' ') #вывод всех индексов, начиная с которых строка t входит в строку m
+          
+main()
+
+#задача 3
+def preph(s): 
+    k=[0]*len(s)
+    for i in range(len(s)-1):
+        v=k[i]
+        while v>0 and s[i+1]!=s[v]:
+            v=k[v-1]
+        if s[i+1]==s[v]:
+            k[i+1]=v+1
+        else:
+            k[i+1]=0
+    return k
+def main():
+    s=input()
+    T=s+"&"+s
+    r=preph(T)
+    pr=r[-1]-r[len(s)-1] 
+    k=len(s)//pr 
+    if s[:pr]*k==s: 
+        print(k)
+main()
+
+#задача 4
+def preph(m,l):
+    p=[0]*l
+    for i in range(l-1):
+        v=p[i]
+        while v>0 and m[i+1]!=m[v]:
+            v=p[v-1]
+        if m[i+1]==m[v]:
+            p[i+1]=v+1
+        else:
+            p[i+1]=0
+    return p
+str = input()
+m = preph(str,len(str))
+print(len(str) - m[len(m)-1])
