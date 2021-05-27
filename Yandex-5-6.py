@@ -31,6 +31,18 @@ def getSum(v, l, r, it, ql, qr):
     return tl + tr
 
 
+def update(v, l, r, it, indx, val):
+    if r-l == 1:
+        it[v] = val
+        return
+    middle = (r+l)//2
+    if indx < middle:
+        update(2*v+1, l, middle, it, indx, val)
+    else:
+        update(2*v+2, middle, r, it, indx, val)
+    it[v] = it[2*v+1] + it[2*v+2]
+
+
 def main():
     n = int(input())
     a = []
@@ -44,14 +56,24 @@ def main():
     q = int(input())
     res = []
     while q != 0:
-        l, r, k = map(int, input().split())
-        s = getSum(0, 0, n, it, l-1, r)
-        if s >= k and l > 1:
-            res.append(getZero(0, 0, n, it, k+getSum(0, 0, n, it, 0, l-1)))
-        elif s >= k and l == 1:
-            res.append(getZero(0, 0, n, it, k))
+        request = input().split()
+
+        if request[0] == "s":
+            l, r, k = int(request[1]), int(request[2]), int(request[3])
+            s = getSum(0, 0, n, it, l-1, r)
+            if s >= k and l > 1:
+                res.append(getZero(0, 0, n, it, k +
+                           getSum(0, 0, n, it, 0, l-1)))
+            elif s >= k and l == 1:
+                res.append(getZero(0, 0, n, it, k))
+            else:
+                res.append(-1)
         else:
-            res.append(-1)
+            indx, val = int(request[1]), int(request[2])
+            if val == 0:
+                update(0, 0, n, it, indx-1, 1)
+            else:
+                update(0, 0, n, it, indx-1, 0)
         q -= 1
     print(*res)
 
