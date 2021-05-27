@@ -1,118 +1,169 @@
-#2.3
-def main():
-    t = int(input())
-    c = list(map(int,input().split()))[:t]
-    merge(c,0,len(c))
-    print(*c,sep=" ")
-def merge(c,start,end):
-    if end - start > 1:
-        middle = (start + end) // 2
-        merge(c,start,middle)
-        merge(c,middle,end)
-        left = c[start:middle]
-        right = c[middle:end]
-        internal_sort(c,left,right,start)
-        print(start + 1, end, c[start], c[end-1])
-def internal_sort(arr,left,right,start):
-    j = i = 0
-    n = start
-    while i < len(right) and j < len(left):
-        if left[j] > right[i]:
-            arr[n] = right[i]
-            i+=1
-        else:
-            arr[n] = left[j]
-            j+=1
-        n+=1
-    while j < len(left):
-        arr[n] = left[j]
-        j+=1
-        n+=1
-    while i < len(right):
-        arr[n] = right[i]
-        i+=1
-        n+=1
-main()
-#2.4
-def merge(one, two):
-    spis = []
-    t = 0
-    a = 0
-    inversion = 0
-    while t < len(one) and a < len(two):
-        if one[t] <= two[a]:
-            spis.append(one[t])
-            t += 1
-        else:
-            spis.append(two[a])
-            a += 1
-            inversion += len(one) - t
-    while t < len(one):
-        spis.append(one[t])
-        t += 1
-    while a < len(two):
-        spis.append(two[a])
-        a += 1
-    return spis, inversion
+#2.1
+I = int(input())
 
-def merge_sort(m):
-    n = len(m)
-    if n <= 1:
-        return m, 0
-    middle = n//2
-    one, left = merge_sort(m[0:middle])    
-    two, right = merge_sort(m[middle:n])
-    spis, inversion = merge(one, two)
-    return spis, inversion + left + right    
+k = input().split()[:I]
+a = [int(x) for x in k]
+m = 0
+
+for i in range(I-1):
+        for j in range(I-i-1):
+            if a[j] > a[j+1]:
+                m = 1
+                a[j], a[j+1] = a[j+1], a[j]
+                print(*a, sep=" ")
+
+if m==0:
+    print(0)
+#2.2
+N = int(input())
+spisok=[]
+
+for i in range(N):
+    key,val =map(int,input().split())
+    spisok.append([key,val])
+
+for i in range(N-1):
+    for b in range(N-i-1):
+        if spisok[b][1] < spisok[b+1][1]:
+            spisok[b], spisok[b+1] = spisok[b+1], spisok[b]
+        if spisok[b][1] == spisok[b+1][1] and spisok[b][0] > spisok[b+1][0]:
+            spisok[b], spisok[b+1] = spisok[b+1], spisok[b]
+
+[print(i[0],i[1])for i in spisok]
+#2.3
+def merge_sort(I,start, end):
+    if len(I)>1:
+        mid=len(I)//2
+        left=I[:mid]
+        right=I[mid:]
+      
+
+        merge_sort(left, start, start+mid-1)
+        merge_sort(right, start+mid, end)
+    
+        i, j, k=0,0,0
+        while i<len(left) and j<len(right):
+            if left[i]<right[j]:
+                I[k]=left[i]
+                i+=1
+            else:
+                I[k]= right[j]
+                j+=1
+            k+=1
+
+        while j <len(right):
+            I[k]=right[j]
+            j+=1
+            k+=1
+        while i <len(left):
+            I[k]=left[i]
+            i+=1
+            k+=1
+        print(start, end, I[0], I[-1])
+    return I
 
 n = int(input())
-m = list(map(int, input().split(" ")))
-m, fin = merge_sort(m)
-print(fin)
-#2.6
-skl=int(input())
-prod=list(map(int,input().split()))
-zak=int(input())
-ord=list(map(int,input().split()))
-count=[0]*(skl+1)
-for now in ord:
-    count[now]+=1
-for i in range(skl):
-    if prod[i]<count[i+1]:
-        print ('yes')
-    else:
-        print ('no')
+I= list(map(int, input().split()))[:n]
+merge_sort(I,1,len(I))
+print(*I)
+#2.4
+def merge_sort(I, ir):
 
-fun()
-#2.7
-def func():
-    long = int(input())
-    let = 10
-    numb = []
-    array = []
-    for i in range(long):
-        numb.append(input())
-    for number in numb:
-        array.append(number)
-    
-    print('initial array:')
-    print(', '.join(numb))
-    for i in range(len(numb[0])):
-        print('***')
-        print('phase', i+1)
-        buc = [[] for k in range(let)]
-        for number in array:
-            buc[int(number)//10**i % 10].append(number)
-        array = []
-        for j in range(let):
-            array = array + buc[j]
-            print('bucket', j, end=": ")
-            if len(buc[j]) == 0:
-                print('empty')
+    if len(I) > 1:
+        mid = len(I)//2
+        left = I[:mid]
+        right = I[mid:]
+        
+        ir = merge_sort(left, ir)
+        ir = merge_sort(right, ir)
+
+        i,j,k = 0,0,0
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                I[k] = left[i]
+                i += 1
             else:
-                print(', '.join(map(str, buc[j])))
-    print('***')
-    print('sorted array:')
-    print(', '.join(map(str, arr)))
-func()                
+                I[k] = right[j]
+                j = j+1
+                ir += len(left)-i
+            k = k+1
+        while i < len(left):
+            I[k] = left[i]
+            i = i+1
+            k = k+1
+        while j < len(right):
+            I[k] = right[j]
+            j = j+1
+            k = k+1
+
+    return ir
+
+
+ir = 0
+n = int(input())
+I = list(map(int, input().split()))[:n]
+ir = merge_sort(I, ir)
+print(ir)
+#2.5
+am={}
+d=int(input())
+l=input()
+n=l.split()
+for i in n:
+    am[i]=1
+print(len(am))
+#2.6
+skl1= int(input())
+am = list(int(i) for i in input().split(" "))[:skl1]
+skl2 = int(input())
+q = list(int(i) for i in input().split(" "))[:skl2]
+
+for i in range(0, skl2):
+    am[q[i]-1] -= 1
+
+for i in range(0, skl1):
+    if (am[i] < 0):
+        print("yes")
+    else:
+        print("no")
+#2.7
+Array = []
+length = int(input())
+ 
+for i in range(length):
+    Array.append(input())
+ 
+print("Initial array:")
+ 
+print(', '.join(Array))
+ 
+ 
+Count = len(Array[0])
+Phase=0
+rang=10
+for i in range(Count-1,-1,-1):
+    Phase+=1
+    print('**********')
+    print(f'Phase {Phase}')
+    bucket = [[] for _ in range(rang)]
+    for j in range(len(Array)):
+        bucket[ord(Array[j][i]) - ord('0')].append(Array[j])
+    for j in range(rang):
+        if len(bucket[j])==0:
+            print(f'Bucket {j}: empty')
+        else:
+            print("Bucket "+str(j)+": ", end='')
+            for now in range(len(bucket[j])-1):
+                print(bucket[j][now],end=', ')
+            print(bucket[j][len(bucket[j])-1])
+    p = 0
+    for j in range(rang):
+        for k in range(len(bucket[j])):
+            Array[p] = bucket[j][k]
+            p += 1
+ 
+print('**********')
+print("Sorted array:")
+ 
+print(', '.join(Array))       
 
