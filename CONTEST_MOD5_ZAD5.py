@@ -1,4 +1,4 @@
-rom math import gcd
+from math import gcd
 def build(v, l, r, segment_tree, nums):
     if r - l == 1:
         segment_tree[v] = nums[l]

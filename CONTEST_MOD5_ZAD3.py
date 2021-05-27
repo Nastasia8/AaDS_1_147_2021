@@ -18,3 +18,21 @@ def NOD(v, l, r, segment_tree, ql, qr):
     st_l = int(NOD(2*v +1, l, m, segment_tree, ql, qr))
     st_r = int(NOD(2*v + 2, m, r, segment_tree, ql, qr))
     return gcd(st_l, st_r)
+ 
+ 
+ 
+def main():
+    n = int(input())
+    numbers = list(map(int, input().split()))[:n]
+    segment_tree = [0]*4*n
+    build(0, 0, n, segment_tree, numbers)
+    q = int(input())
+    arr = []
+    while q != 0:
+        l, r = map(int, input().split())
+        arr.append(int(NOD(0, 0, n, segment_tree, l-1, r)))
+        q -= 1
+    print(*arr)
+ 
+ 
+main()
