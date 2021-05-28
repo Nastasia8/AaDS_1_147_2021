@@ -1,0 +1,352 @@
+#задача 1 м2
+v = int(input())
+strok = input()
+strok = strok.split(" ")
+array=[]
+for i in range(0,len(strok)):
+	array.append(int(strok[i]))
+m = len(strok)
+num = 0
+for i in range(0,m-1):
+    for j in range(0,m-i-1):
+        if array[j] > array[j+1]:
+            array[j], array[j+1] = array[j+1], array[j]
+            num+=1
+            print(" ".join(map(str,array)))
+if num==0:
+    print(0)
+    
+#задача 2 м2
+v = int(input())
+nab = []
+for i in range(v):
+    nab.append(input())
+    nab[i] = nab[i].split(" ")
+    for j in range(len(nab[i])):
+        nab[i][j] = int(nab[i][j])
+
+for i in range(v-1):
+    for j in range(v - i - 1):
+        if nab[j][1] < nab[j+1][1]:
+            nab[j], nab[j+1] = nab[j+1], nab[j]
+for i in range(v-1):
+    for j in range(v - i - 1):
+            if nab[j][1] == nab[j+1][1]:
+                if nab[j][0] > nab[j+1][0]:
+                    nab[j], nab[j+1] = nab[j+1], nab[j]
+for i in range(v):
+    stroka = ""
+    stroka += str(nab[i][0])
+    for j in range(1,len(nab[i])):
+        stroka+=" "
+        stroka+=str(nab[i][j])
+    print(stroka)
+    
+ #задача 3 м2
+    def main():
+    n = int(input())
+    a = list(map(int,input().split()))[:n]
+    merge(a,0,len(a))
+    print(*a,sep=" ")
+
+def merge(a,start,end):
+    if end - start > 1:
+        middle = (start + end) // 2
+        merge(a,start,middle)
+        merge(a,middle,end)
+        left = a[start:middle]
+        right = a[middle:end]
+        internal_sort(a,left,right,start)
+        print(start + 1, end, a[start], a[end-1])
+
+def internal_sort(arr,left,right,start):
+    j = i = 0
+    k = start
+    while i < len(right) and j < len(left):
+        if left[j] > right[i]:
+            arr[k] = right[i]
+            i+=1
+        else:
+            arr[k] = left[j]
+            j+=1
+        k+=1
+    while j < len(left):
+        arr[k] = left[j]
+        j+=1
+        k+=1
+    while i < len(right):
+        arr[k] = right[i]
+        i+=1
+        k+=1
+main()
+
+#задача 4 м2
+def merge(A, B):
+    res = []
+    i = 0
+    j = 0
+    inver = 0
+    while i < len(A) and j < len(B):
+        if A[i] <= B[j]:
+            res.append(A[i])
+            i += 1
+        else:
+            res.append(B[j])
+            j += 1
+            inver += len(A) - i
+    while i < len(A):
+        res.append(A[i])
+        i += 1
+    while j < len(B):
+        res.append(B[j])
+        j += 1
+    return res, inver
+
+def MergeSort(L):
+    n = len(L)
+    if n <= 1:
+        return L, 0
+    middle = n//2
+    A, l_inver = MergeSort(L[0:middle])    
+    B, r_inver = MergeSort(L[middle:n])
+    res, inver = merge(A, B)
+    return res, inver + l_inver + r_inver     
+
+N = int(input())
+L = list(map(int, input().split(" ")))
+L, itog_inver = MergeSort(L)
+print(itog_inver)
+
+#задача 1 м3
+def preph(m):
+    p=[0]*len(m)
+    for i in range(len(m)-1):
+        v=p[i]
+        while v>0 and m[i+1]!=m[v]:
+            v=p[v-1]
+        if m[i+1]==m[v]:
+            p[i+1]=v+1
+        else:
+            p[i+1]=0
+    return p
+def main():
+    m=input()
+    t=input()
+    itog=t+'&'+m
+    p=preph(itog)
+    for i in range(len(p)):
+        if p[i]==len(t):
+            print(i-2*len(t),end=' ')
+          
+main()
+
+#задача 2 м3
+def get_hash(s,x,p):
+    hs=0
+    for i in range (len(s)):
+        hs=(hs*x+ord(s[i]))%p
+    return hs
+
+def fun(s,t,x,p):
+    if s!=t:
+        k=1
+        t=t[1:]+t[0]
+        hs=get_hash(s,x,p)
+        ht=get_hash(t,x,p)
+        xt=1
+        for i in range(len(s)-1):
+            xt=(xt*x)%p
+        for i in range(len(t)-1):
+            if hs==ht:
+                break
+            else:
+                ht=(x*(ht-ord(t[i])*xt)+ord(t[i]))%p
+                k+=1
+        if hs==ht:
+            print(k)
+        else:
+            print(-1)
+    else:
+        print (0)
+
+def main():
+    s=input() 
+    t=input() 
+    x=26
+    p=1*10**9+7
+    fun(s,t,x,p)
+
+main()
+
+#задача 3 м3
+def preph(s):
+    p=[0]*len(s)
+    for i in range (len(s)-1):
+        k=p[i]
+        while k>0 and s[i+1]!=s[k]:
+            k=p[k-1]
+        if s[i+1]==s[k]:
+            p[i+1]=k+1
+        else:
+           p[i+1]=0
+    return p
+
+def main():
+    s=input()
+    s_t=s+"&"+s
+    p=preph(s_t)
+    pr=p[-1]-p[len(s)-1]
+    b=len(s)//pr
+    if s[:pr]*b==s:
+        print(b)
+    else:
+        print(1)
+    
+main()
+
+#задача 4 м3
+def preph(m,l):
+    p=[0]*l
+    for i in range(l-1):
+        v=p[i]
+        while v>0 and m[i+1]!=m[v]:
+            v=p[v-1]
+        if m[i+1]==m[v]:
+            p[i+1]=v+1
+        else:
+            p[i+1]=0
+    return p
+str = input()
+m = preph(str,len(str))
+print(len(str) - m[len(m)-1])
+
+#задача 1 м5
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+    def add(self, value):
+        if self.data == value:
+            return
+        if value<self.data:
+            if self.left:
+                self.left.add(value) 
+            else:
+                self.left = Node(value)
+        else:
+            if self.right:
+                self.right.add(value)
+            else:
+                self.right = Node(value)
+
+    def find_forcs(self):
+        if self.left:
+            self.left.find_forcs()
+        if (self.left and not self.right) or (not self.left and self.right):
+            print(self.data,)
+        if self.right:
+            self.right.find_forcs()
+
+def build_tree(elements):
+    root = Node(elements[0])
+    for i in range(1, len(elements)):
+        root.add(elements[i],)
+    return root
+
+def main():
+    elements = list(map(int, input().split()))
+    elements =elements[:-1]
+    tree = build_tree(elements)
+    tree.find_forcs()
+    
+main()
+
+#задача 2 м5
+class Node: #создаем класс
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+    def add(self, data):
+        if data == self.data:
+            return
+        if data < self.data:
+            if self.left:
+                self.left.add(data)
+            else:
+                self.left = Node(data)
+        else:
+            if self.right:
+                self.right.add(data)
+            else:
+                self.right = Node(data)
+
+
+def height(tree): #функция расчета высоты дерева
+    if tree is None:
+        return 0
+    return max(height(tree.left), height(tree.right))+1
+
+
+def build_tree(elements): #функция построения дерева 
+    root = Node(elements[0])
+    for i in range(1, len(elements)):
+        root.add(elements[i])
+    return root 
+
+
+def balance_tree(tree): #функция проверки 
+    if not tree or ((height(tree.left) == height(tree.right) or height(tree.left)+1 == height(tree.right) or height(tree.left) == height(tree.right)+1) and balance_tree(tree.right) and balance_tree(tree.left)):
+        return True
+    return False 
+
+
+numbers = [int(i) for i in input().split()] 
+numbers.pop()     
+tree = build_tree(numbers)
+if balance_tree(tree):
+    print("YES")
+else:
+    print("NO")
+    
+ #задача 3 м6
+ def shift_down(index, heap): #функция сравнения
+    while 2*index+1 < len(heap):
+        left_index = 2*index+1
+        right_index = 2*index+2
+        child_index = 2*index+1
+        if right_index < len(heap) and heap[left_index] < heap[right_index]:
+            child_index = right_index
+        if heap[child_index] <= heap[index]:
+            break
+        heap[index], heap[child_index] = heap[child_index], heap[index]
+        index = child_index
+
+def extract(heap): #функция нахождения максимального элемента
+    heap[0], heap[-1] = heap[-1], heap[0] #меняем местами
+    ind = heap.pop() #удаляем из списка
+    shift_down(0, heap)
+    return ind
+
+def build(arr): 
+    heap = arr[:]
+    for i in range(len(heap)-1, -1, -1):
+        shift_down(i, heap)
+    return heap
+
+def main():
+    
+    result = []
+    t = int(input()) 
+    spisok = list(map(int, input().split()))[:t] 
+    heap = build(spisok) 
+    for i in range (t): 
+        print(*heap)
+        result.append(extract(heap)) 
+    result.reverse() 
+    print(*result) 
+ 
+
+main()
