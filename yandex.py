@@ -76,6 +76,28 @@ def merge_sort(numbers):
 
 print(*merge_sort(numbers))
 
+#sort 4
+
+N = int(input())
+numbers = [int(i) for i in input().split()][:N]
+
+def count_inversions(a):
+  res = 0
+  counts = [0]*(len(a)+1)
+  rank = { v : i+1 for i, v in enumerate(sorted(a)) }
+  for x in reversed(a):
+    i = rank[x] - 1
+    while i:
+      res += counts[i]
+      i -= i & -i
+    i = rank[x]
+    while i <= len(a):
+      counts[i] += 1
+      i += i & -i
+  return res
+
+print(count_inversions(numbers))
+
 #sort 5
 
 N = int(input())
@@ -83,4 +105,17 @@ N = int(input())
 numbers = [int(i) for i in input().split()][:N]
 
 print(len(set(numbers)))
+
+#sort 6
+
+a = int(input())
+b = list(map(int,input().split()))[:a]
+c = int(input())
+d = list(map(int,input().split()))[:c]
+
+for i in range(a):
+    if b[i] < d.count(i+1):
+        print("yes")
+    else:
+        print("no")
 
